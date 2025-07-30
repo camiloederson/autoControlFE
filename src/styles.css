@@ -1,1 +1,29 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --color-primary: #1a1f36;
+  --color-secondary: #2b6cb0;
+  --color-accent: #ff6b35;
+  --color-bg-light: #f9f9fb;
+  --color-text: #2d2d2d;
+  --color-border: #e0e0e0;
+  --color-icon: #a0a0a0;
+  --color-icon-hover: var(--color-accent);
+}
+
+/* Íconos modernos */
+.action-icon {
+  color: var(--color-icon);
+  font-size: 1.1rem;
+  transition: color 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.action-icon:hover {
+  color: var(--color-icon-hover);
+  transform: scale(1.15);
+}
+
+/* Fila con efecto hover sutil */
+.table-row-hover:hover {
+  background-color: #eef3fa;
+  transition: background-color 0.3s ease;
+}
