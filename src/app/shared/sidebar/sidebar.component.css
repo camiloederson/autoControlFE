@@ -1,0 +1,40 @@
+.sidebar {
+  width: 240px;
+  height: 100vh;
+  background-color: var(--color-primary);
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 1rem;
+  z-index: 1000;
+}
+
+.sidebar-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-link {
+  color: var(--color-icon);
+  padding: 12px 20px;
+  font-size: 0.95rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  background-color: var(--color-secondary);
+  color: white;
+  border-left: 4px solid var(--color-accent);
+  padding-left: 16px;
+}
+
+.nav-link i {
+  font-size: 1.1rem;
+  color: var(--color-icon);
+}
+
+.nav-link.active i,
+.nav-link:hover i {
+  color: white;
+}
