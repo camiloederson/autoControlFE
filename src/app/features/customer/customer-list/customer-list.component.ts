@@ -4,11 +4,10 @@ import { CustomerGetDTO } from '../customer-get-dto';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-customer-list',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './customer-list.component.html',
-  styleUrl: './customer-list.component.css'
+    selector: 'app-customer-list',
+    imports: [CommonModule],
+    templateUrl: './customer-list.component.html',
+    styleUrl: './customer-list.component.css'
 })
 export class CustomerListComponent implements OnInit {
 
