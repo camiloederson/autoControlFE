@@ -1,1 +1,32 @@
-<router-outlet />
+<div class="flex flex-col min-h-screen font-inter bg-white text-slate-700">
+
+  <!-- Navbar -->
+  <app-navbar
+    (toggleMobileMenu)="toggleMenu()"
+    (toggleSidebar)="toggleSidebar()">
+  </app-navbar>
+
+  <!-- Mobile menu placeholder -->
+  <div *ngIf="isMenuOpen" class="md:hidden">
+    <!-- Aquí se puede renderizar el menú móvil dentro de NavbarComponent -->
+  </div>
+
+  <!-- Layout principal: sidebar + main -->
+  <div class="flex justify-center w-full flex-1">
+    <div class="flex w-full max-w-[1280px]">
+
+      <!-- Sidebar -->
+      <app-sidebar [isOpen]="isSidebarOpen"></app-sidebar>
+
+      <!-- Main content -->
+      <main class="flex-1">
+        <app-content></app-content>
+      </main>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <app-footer></app-footer>
+
+</div>

@@ -1,0 +1,11 @@
+<p>vehicle-brand-list works!</p>
+@if(vehicleBrandList.length>0){
+    <pre>
+        {{ vehicleBrandList  | json}}
+    </pre>
+}
+@else{
+    <p>
+        There is no data to show
+    </p>
+}

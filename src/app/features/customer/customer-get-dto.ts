@@ -5,4 +5,5 @@ export interface CustomerGetDTO {
     dui : string;
     email : string;
     phone : string;
+    active: boolean
 }

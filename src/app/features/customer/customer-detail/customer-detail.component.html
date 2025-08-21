@@ -1,1 +1,30 @@
-<p>customer-detail works!</p>
+<app-toolbar title="Detalle de Cliente" ></app-toolbar>
+@if (customer) {
+  <div class="card customer-card">
+    <img
+      src="../../../../assets/img/customer_temp.jpg"
+      class="card-img"
+      alt="Foto del cliente"
+    />
+    <div class="card-body">
+      <h5 class="card-title">{{ customer.name }} {{ customer.surname }}</h5>
+      <div class="info-row">
+        <div class="info-item">
+          <i class="bi bi-envelope"></i>
+          <strong>Correo:</strong> {{ customer.email }}
+        </div>
+        <div class="info-item">
+          <i class="bi bi-phone-vibrate"></i>
+          <strong>Teléfono:</strong> {{ customer.phone }}
+        </div>
+      </div>
+      <div class="btn-container">
+        <a [routerLink]="['/customerForm', customer.id]" class="btn btn-primary">
+          <i class="bi bi-pencil-square me-1"></i> Editar Cliente
+        </a>
+      </div>
+    </div>
+  </div>
+} @else {
+  <p>Cargando cliente...</p>
+}

@@ -1,0 +1,24 @@
+<aside 
+  class="bg-white border-r border-slate-200 transition-all duration-300"
+  [class.w-56]="isOpen" 
+  [class.w-16]="!isOpen">
+  
+  <div class="flex flex-col h-full py-4">
+    <ul class="flex-1 flex flex-col gap-2">
+      <li class="flex items-center gap-3 px-4 py-2 hover:bg-slate-100 cursor-pointer">
+        <svg class="h-5 w-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M3 12l2-2m0 0l7-7 7 7m-9 2v8m-4-4h8" />
+        </svg>
+        <span *ngIf="isOpen" class="text-sm font-medium">Inicio</span>
+      </li>
+      <li class="flex items-center gap-3 px-4 py-2 hover:bg-slate-100 cursor-pointer">
+        <svg class="h-5 w-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M9 17v-6h13v6m-6-6V5H9v6m-6 6h6" />
+        </svg>
+        <span *ngIf="isOpen" class="text-sm font-medium">Órdenes</span>
+      </li>
+    </ul>
+  </div>
+</aside>

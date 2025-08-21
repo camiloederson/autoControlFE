@@ -1,0 +1,30 @@
+.toolbar-container {
+  display: flex;
+  justify-content: space-between; /* Título a la izquierda, botones a la derecha */
+  align-items: center;
+  padding: 0.5rem 0rem;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 1rem;
+}
+
+.toolbar-title {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.toolbar-actions i {
+  font-size: 1.3rem;
+  margin-left: 1rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.toolbar-actions i:hover {
+  color: #0d6efd; /* color de hover azul */
+}
+
+hr{
+  margin-bottom: 1rem;
+}

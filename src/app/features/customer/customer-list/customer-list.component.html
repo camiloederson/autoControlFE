@@ -1,34 +1,31 @@
-<!-- customer-list.component.html -->
-<div class="container-fluid px-3 px-md-4 mt-4">
-  <div class="card shadow-sm border-0" style="background-color: var(--color-bg-light); border-radius: 16px;">
-    <div class="card-header text-white py-3 px-4" style="background-color: var(--color-primary); border-top-left-radius: 16px; border-top-right-radius: 16px;">
-      <h2 class="mb-0 fw-semibold fs-4">Customers</h2>
-    </div>
-
-    <div class="card-body px-0">
-      <div class="table-responsive">
-        <table class="table table-hover mb-0 align-middle">
-          <thead>
-            <tr>
-              <th class="px-4 py-3">Name</th>
-              <th class="py-3">Email</th>
-              <th class="py-3">Phone</th>
-              <th class="text-end px-4 py-3">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let c of customers" class="table-row-hover">
-              <td class="px-4 py-3">{{ c.name }}</td>
-              <td class="py-3">{{ c.email }}</td>
-              <td class="py-3">{{ c.phone }}</td>
-              <td class="text-end px-4 py-3">
-                <i class="bi bi-pencil-fill action-icon me-3" title="Edit"></i>
-                <i class="bi bi-trash-fill action-icon" title="Delete"></i>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
+<app-toolbar title="Clientes" (onNew)="create()" ></app-toolbar>
+<div class="table-responsive">
+  <table class="custom-table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Teléfono</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let customer of customers">
+        <td data-label="Nombre">{{ customer.name }} {{ customer.surname }}</td>
+        <td data-label="Email">{{ customer.email }}</td>
+        <td data-label="Teléfono">{{ customer.phone }}</td>
+        <td class="action-icons">
+          <a
+            [routerLink]="['/customerDetails', customer.id]"
+            title="Ver detalles"
+          >
+            <i class="bi bi-eye"></i>
+          </a>
+          <a [routerLink]="['/customerForm', customer.id]" title="Editar">
+            <i class="bi bi-input-cursor-text"></i>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>

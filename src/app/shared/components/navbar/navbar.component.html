@@ -1,0 +1,126 @@
+<!-- Navbar -->
+<nav class="w-full bg-teal-600 text-white h-12 flex items-center px-4">
+  <div class="flex justify-between items-center w-full max-w-[1280px] mx-auto">
+    
+    <!-- Logo -->
+    <div class="text-sm font-semibold">AutoControl ERP</div>
+
+    <!-- Desktop: input de búsqueda + iconos -->
+    <div class="hidden md:flex items-center ml-auto">
+      
+      <!-- Input búsqueda + botón, separado del resto -->
+      <div class="flex items-center gap-1 mr-16">
+        <input
+          placeholder="Buscar..."
+          class="h-6 px-2 text-sm rounded-l text-black font-inter placeholder:text-slate-400 max-w-[180px]"
+        />
+        <button
+          type="button"
+          class="h-6 w-8 flex items-center justify-center bg-teal-500 rounded-r hover:bg-teal-400"
+        >
+          <i class="bi bi-search text-sm text-white"></i>
+        </button>
+      </div>
+
+      <!-- Iconos, con espacio entre ellos -->
+      <div class="flex items-center gap-3">
+        <button class="hover:text-slate-200" title="Perfil">
+          <i class="bi bi-person text-lg"></i>
+        </button>
+
+        <button class="hover:text-slate-200" title="Ajustes">
+          <i class="bi bi-gear text-lg"></i>
+        </button>
+
+        <button class="hover:text-slate-200" title="Cerrar sesión">
+          <i class="bi bi-x-circle text-lg"></i>
+        </button>
+
+        <button class="hover:text-slate-200 relative" title="Notificaciones">
+          <i class="bi bi-bell text-lg"></i>
+          <span class="absolute top-0 right-0 inline-block w-2 h-2 bg-red-500 rounded-full"></span>
+        </button>
+
+        <button class="hover:text-slate-200" title="Switch tema">
+          <i class="bi bi-moon text-lg"></i>
+        </button>
+
+        <button class="hover:text-slate-200" title="Ayuda">
+          <i class="bi bi-question-circle text-lg"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile: icono búsqueda + toggle menú -->
+    <div class="flex md:hidden items-center gap-3">
+      <button (click)="toggleSearch()" class="hover:text-white p-1 rounded">
+        <i class="bi bi-search text-xl"></i>
+      </button>
+
+      <button (click)="toggleMenu()" class="hover:text-white p-1 rounded">
+        <i *ngIf="!isMenuOpen" class="bi bi-list text-2xl"></i>
+        <i *ngIf="isMenuOpen" class="bi bi-x-lg text-2xl"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Search Overlay -->
+<div
+  *ngIf="isSearchOpen"
+  class="fixed inset-0 bg-teal-700 bg-opacity-95 z-50 p-4 flex flex-col"
+>
+  <button
+    (click)="closeSearch()"
+    class="absolute top-4 right-4 text-white hover:text-gray-300"
+  >
+    <i class="bi bi-x-lg text-2xl"></i>
+  </button>
+  <div class="mt-16 flex justify-center w-full">
+    <input
+      type="text"
+      placeholder="Buscar..."
+      class="w-[90%] max-w-md px-4 py-1 rounded text-black font-inter placeholder:text-slate-400"
+    />
+  </div>
+</div>
+
+<!-- Mobile Menu Overlay -->
+<div
+  *ngIf="isMenuOpen"
+  class="fixed inset-0 bg-teal-700 bg-opacity-95 z-50 p-4 flex flex-col"
+>
+  <button
+    (click)="closeMenu()"
+    class="absolute top-4 right-4 text-white hover:text-gray-300"
+  >
+    <i class="bi bi-x-lg text-2xl"></i>
+  </button>
+  <ul class="flex flex-col gap-4 text-white text-sm font-medium mt-16">
+    <li class="flex items-center gap-2 hover:text-slate-200 cursor-pointer">
+      <i class="bi bi-person text-lg"></i>
+      Perfil
+    </li>
+    <li class="flex items-center gap-2 hover:text-slate-200 cursor-pointer">
+      <i class="bi bi-gear text-lg"></i>
+      Ajustes
+    </li>
+    <li class="flex items-center gap-2 hover:text-slate-200 cursor-pointer">
+      <i class="bi bi-x-circle text-lg"></i>
+      Cerrar sesión
+    </li>
+    <li class="flex items-center gap-2 hover:text-slate-200 cursor-pointer">
+      <i class="bi bi-bell text-lg"></i>
+      Notificaciones
+    </li>
+    <li class="flex items-center gap-2 hover:text-slate-200 cursor-pointer">
+      <i class="bi bi-moon text-lg"></i>
+      Switch tema
+    </li>
+    <li class="flex items-center gap-2 hover:text-slate-200 cursor-pointer">
+      <i class="bi bi-question-circle text-lg"></i>
+      Ayuda
+    </li>
+  </ul>
+</div>
