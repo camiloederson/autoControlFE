@@ -1,24 +1,51 @@
-<aside 
-  class="bg-white border-r border-slate-200 transition-all duration-300"
-  [class.w-56]="isOpen" 
-  [class.w-16]="!isOpen">
-  
-  <div class="flex flex-col h-full py-4">
-    <ul class="flex-1 flex flex-col gap-2">
-      <li class="flex items-center gap-3 px-4 py-2 hover:bg-slate-100 cursor-pointer">
-        <svg class="h-5 w-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M3 12l2-2m0 0l7-7 7 7m-9 2v8m-4-4h8" />
-        </svg>
-        <span *ngIf="isOpen" class="text-sm font-medium">Inicio</span>
-      </li>
-      <li class="flex items-center gap-3 px-4 py-2 hover:bg-slate-100 cursor-pointer">
-        <svg class="h-5 w-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M9 17v-6h13v6m-6-6V5H9v6m-6 6h6" />
-        </svg>
-        <span *ngIf="isOpen" class="text-sm font-medium">Órdenes</span>
-      </li>
-    </ul>
+<div class="relative flex">
+  <div
+    [class.w-52]="isOpen"
+    [class.w-16]="!isOpen"
+    class="transition-all duration-300 bg-white text-slate-700 flex flex-col border-r border-slate-200"
+  >
+    <!-- Espaciado superior -->
+    <div class="h-4 bg-white"></div>
+
+    <!-- Toggle lateral -->
+    <div class="flex mb-2">
+      <button
+        (click)="toggleSidebar()"
+        class="flex items-center text-sm font-extrabold text-white px-1 py-0.5 bg-teal-600"
+      >
+        <i *ngIf="isOpen" class="bi bi-chevron-left text-sm"></i>
+        <i *ngIf="!isOpen" class="bi bi-chevron-right text-sm"></i>
+      </button>
+    </div>
+
+    <div class="h-3 bg-white"></div>
+
+    <!-- Menu dinámico -->
+    <nav class="flex-1 text-[0.85rem]">
+      <ng-container *ngFor="let item of menu">
+        <!-- Item principal -->
+        <div class="flex items-center justify-between hover:bg-slate-100 px-4 py-2 cursor-pointer"
+             [ngClass]="isOpen ? 'justify-start' : 'justify-center'">
+          <div class="flex items-center gap-3">
+            <i class="{{item.icon}} text-lg"></i>
+            <span *ngIf="isOpen">{{ item.label }}</span>
+          </div>
+          <!-- Flecha si tiene subitems -->
+          <i *ngIf="item.children && isOpen"
+             (click)="toggleSubmenu(item)"
+             class="bi"
+             [ngClass]="item.isOpen ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
+        </div>
+
+        <!-- Subitems -->
+        <div *ngIf="item.children && item.isOpen" class="ml-8">
+          <a *ngFor="let child of item.children"
+             class="flex items-center px-2 py-1 hover:bg-slate-100">
+            <i class="{{child.icon}} text-sm"></i>
+            <span class="ml-2 text-[0.8rem]">{{ child.label }}</span>
+          </a>
+        </div>
+      </ng-container>
+    </nav>
   </div>
-</aside>
+</div>

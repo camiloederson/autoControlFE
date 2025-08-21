@@ -9,7 +9,7 @@ import { FooterComponent } from './shared/components/footer/footer.component';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  imports: [CommonModule,NavbarComponent, SidebarComponent, ContentComponent, FooterComponent]
+  imports: [CommonModule, NavbarComponent, SidebarComponent, ContentComponent, FooterComponent]
 })
 export class AppComponent {
   isSidebarOpen = true;
