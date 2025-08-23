@@ -86,6 +86,8 @@ export class CustomerFormComponent implements OnInit {
             iconColor: 'darkcyan',
             title: 'Cliente creado',
             text: 'Cliente creado satisfactoriamente con id: ' + response.id,
+            confirmButtonText: 'OK',
+            confirmButtonColor:' #0d9488'
           });
           this.router.navigate(['/customers']);
         },
@@ -93,10 +95,11 @@ export class CustomerFormComponent implements OnInit {
           console.log(err);
           Swal.fire({
             icon: 'error',
-            iconColor: 'orangered',
-
+            iconColor: ' #0d9488',
             title: 'Error al crear cliente',
             text: "Revisa consola",
+            confirmButtonText: 'OK',
+            confirmButtonColor: ' #0d9488'
           });
         },
       });

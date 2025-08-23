@@ -1,30 +1,46 @@
-<app-toolbar title="Detalle de Cliente" ></app-toolbar>
+<app-toolbar title="Detalle de Cliente"></app-toolbar>
+
 @if (customer) {
-  <div class="card customer-card">
+  <div
+    class="w-full bg-white shadow-md rounded-xl overflow-hidden flex flex-col md:flex-row mt-8"
+  >
+    <!-- Foto -->
     <img
       src="../../../../assets/img/customer_temp.jpg"
-      class="card-img"
       alt="Foto del cliente"
+      class="w-full md:w-48 h-48 object-cover"
     />
-    <div class="card-body">
-      <h5 class="card-title">{{ customer.name }} {{ customer.surname }}</h5>
-      <div class="info-row">
-        <div class="info-item">
-          <i class="bi bi-envelope"></i>
-          <strong>Correo:</strong> {{ customer.email }}
+
+    <!-- Info -->
+    <div class="flex flex-col p-4 flex-1">
+      <h5 class="text-lg font-semibold text-slate-700 mb-3">
+        {{ customer.name }} {{ customer.surname }}
+      </h5>
+
+      <!-- Datos -->
+      <div class="flex flex-col gap-2 text-sm text-slate-600">
+        <div class="flex items-center gap-2">
+          <i class="bi bi-envelope text-cyan-500"></i>
+          <span><strong>Correo:</strong> {{ customer.email }}</span>
         </div>
-        <div class="info-item">
-          <i class="bi bi-phone-vibrate"></i>
-          <strong>Teléfono:</strong> {{ customer.phone }}
+        <div class="flex items-center gap-2">
+          <i class="bi bi-phone-vibrate text-indigo-500"></i>
+          <span><strong>Teléfono:</strong> {{ customer.phone }}</span>
         </div>
       </div>
-      <div class="btn-container">
-        <a [routerLink]="['/customerForm', customer.id]" class="btn btn-primary">
-          <i class="bi bi-pencil-square me-1"></i> Editar Cliente
+
+      <!-- Botón -->
+      <div class="mt-4">
+        <a
+          [routerLink]="['/customerForm', customer.id]"
+          class="inline-flex items-center bg-teal-600 hover:bg-teal-500 text-white text-sm font-medium px-4 py-1.5 rounded-lg transition-colors"
+        >
+          <i class="bi bi-pencil-square me-1 mr-2"></i>
+          Editar Cliente
         </a>
       </div>
     </div>
   </div>
 } @else {
-  <p>Cargando cliente...</p>
+  <p class="text-slate-500 text-sm">Cargando cliente...</p>
 }

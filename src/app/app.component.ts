@@ -4,12 +4,13 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 import { ContentComponent } from './shared/components/content/content.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  imports: [CommonModule, NavbarComponent, SidebarComponent, ContentComponent, FooterComponent]
+  imports: [CommonModule, NavbarComponent, SidebarComponent, ContentComponent, FooterComponent, RouterOutlet]
 })
 export class AppComponent {
   isSidebarOpen = true;

@@ -1,29 +1,67 @@
-<app-toolbar title="Clientes" (onNew)="create()" ></app-toolbar>
-<div class="table-responsive">
-  <table class="custom-table">
-    <thead>
-      <tr>
-        <th>Nombre</th>
-        <th>Email</th>
-        <th>Teléfono</th>
-        <th>Acciones</th>
+<app-toolbar title="Clientes" (onNew)="create()"></app-toolbar>
+
+<div class="overflow-x-auto mt-4">
+  <table class="w-full border-collapse text-sm">
+    <thead class="hidden md:table-header-group">
+      <tr class="bg-gray-100 text-left">
+        <th class="px-4 py-2 font-semibold">Nombre</th>
+        <th class="px-4 py-2 font-semibold">Email</th>
+        <th class="px-4 py-2 font-semibold">Teléfono</th>
+        <th class="px-4 py-2 font-semibold">Acciones</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let customer of customers">
-        <td data-label="Nombre">{{ customer.name }} {{ customer.surname }}</td>
-        <td data-label="Email">{{ customer.email }}</td>
-        <td data-label="Teléfono">{{ customer.phone }}</td>
-        <td class="action-icons">
-          <a
-            [routerLink]="['/customerDetails', customer.id]"
-            title="Ver detalles"
-          >
-            <i class="bi bi-eye"></i>
-          </a>
-          <a [routerLink]="['/customerForm', customer.id]" title="Editar">
-            <i class="bi bi-input-cursor-text"></i>
-          </a>
+      <tr *ngFor="let customer of customers"
+          class="border-b md:table-row block mb-4 md:mb-0 rounded-md hover:bg-gray-50 transition-colors">
+        
+        <!-- Nombre -->
+        <td data-label="Nombre"
+            class="px-4 py-2 md:table-cell flex md:block justify-between">
+          <span class="font-medium md:hidden">Nombre:</span>
+          {{ customer.name }} {{ customer.surname }}
+        </td>
+
+        <!-- Email -->
+        <td data-label="Email"
+            class="px-4 py-2 md:table-cell flex md:block justify-between">
+          <span class="font-medium md:hidden">Email:</span>
+          {{ customer.email }}
+        </td>
+
+        <!-- Teléfono -->
+        <td data-label="Teléfono"
+            class="px-4 py-2 md:table-cell flex md:block justify-between">
+          <span class="font-medium md:hidden">Teléfono:</span>
+          {{ customer.phone }}
+        </td>
+
+        <!-- Acciones -->
+        <td data-label="Acciones"
+            class="px-4 py-2 md:table-cell flex md:block justify-between gap-3">
+          <span class="font-medium md:hidden">Acciones:</span>
+          <div class="flex gap-3">
+            <!-- Ver detalles -->
+            <a [routerLink]="['/customerDetails', customer.id]" title="Ver detalles">
+              <svg xmlns="http://www.w3.org/2000/svg"
+                   class="h-5 w-5 text-slate-500 hover:text-cyan-700 transition-colors"
+                   fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+              </svg>
+            </a>
+
+            <!-- Editar -->
+            <a [routerLink]="['/customerForm', customer.id]" title="Editar">
+              <svg xmlns="http://www.w3.org/2000/svg"
+                   class="h-5 w-5 text-slate-500 hover:text-cyan-700 transition-colors"
+                   fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5M18.5 2.5a2.121 2.121 0 113 3L12 15l-4 1 1-4 9.5-9.5z" />
+              </svg>
+            </a>
+          </div>
         </td>
       </tr>
     </tbody>

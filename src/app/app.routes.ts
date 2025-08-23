@@ -17,24 +17,27 @@ import { VehicleListComponent } from './features/vehicles/vehicle-list/vehicle-l
 import { VehicleBrandDetailComponent } from './features/vehicleBrands/vehicle-brand-detail/vehicle-brand-detail.component';
 import { CustomerDetailComponent } from './features/customer/customer-detail/customer-detail.component';
 import { CustomerFormComponent } from './features/customer/customer-form/customer-form.component';
+import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 
 export const routes: Routes = [
-    {path: 'customers', component: CustomerListComponent },
-    {path: 'customerDetails/:id', component: CustomerDetailComponent},
-    {path: 'customerForm', component: CustomerFormComponent},
-    {path: 'customerForm/:id', component: CustomerFormComponent},
-    {path: 'mechanics', component: MechanicListComponent},
-    {path: 'payments', component: PaymentListComponent},
-    {path: 'paymentStatuses', component: PaymentStatusListComponent},
-    {path: 'paymentTypes', component: PaymentTypeListComponent },
-    {path: 'sparePartBrands', component: SparePartBrandListComponent},
-    {path: 'sparePartCategories', component: SparePartCategoryListComponent},
-    {path: 'spareParts', component: SparePartListComponent},
-    {path: 'sparePartsUsed', component: SparePartUsedListComponent},
-    {path: 'users', component: UserListComponent},
-    {path: 'vehicles', component: VehicleListComponent},
-    {path: 'vehicleBrands', component: VehicleBrandListComponent},
-    {path: 'vehicleBrands/:id', component: VehicleBrandDetailComponent},
-    {path: 'vehicleStatuses', component: VehicleStatusListComponent},
-    {path: 'orders', component: OrderRepairListComponent}
+  { path: '', component: NotFoundComponent },
+  { path: 'customers', component: CustomerListComponent },
+  { path: 'customerDetails/:id', component: CustomerDetailComponent },
+  { path: 'customerForm', component: CustomerFormComponent },
+  { path: 'customerForm/:id', component: CustomerFormComponent },
+  { path: 'mechanics', component: MechanicListComponent },
+  { path: 'payments', component: PaymentListComponent },
+  { path: 'paymentStatuses', component: PaymentStatusListComponent },
+  { path: 'paymentTypes', component: PaymentTypeListComponent },
+  { path: 'sparePartBrands', component: SparePartBrandListComponent },
+  { path: 'sparePartCategories', component: SparePartCategoryListComponent },
+  { path: 'spareParts', component: SparePartListComponent },
+  { path: 'sparePartsUsed', component: SparePartUsedListComponent },
+  { path: 'users', component: UserListComponent },
+  { path: 'vehicles', component: VehicleListComponent },
+  { path: 'vehicleBrands', component: VehicleBrandListComponent },
+  { path: 'vehicleBrands/:id', component: VehicleBrandDetailComponent },
+  { path: 'vehicleStatuses', component: VehicleStatusListComponent },
+  { path: 'orders', component: OrderRepairListComponent },
+  { path: '**', component: NotFoundComponent },
 ];

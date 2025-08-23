@@ -9,13 +9,21 @@
 
     <!-- Toggle lateral -->
     <div class="flex mb-2">
+      @if(isOpen){
       <button
+        (click)="toggleSidebar()"
+        class="flex items-center text-sm font-extrabold text-white px-1 py-0.5 bg-slate-600"
+      >
+        <i class="bi bi-chevron-left text-sm"></i>
+      </button>
+      } @if (!isOpen) {
+        <button
         (click)="toggleSidebar()"
         class="flex items-center text-sm font-extrabold text-white px-1 py-0.5 bg-teal-600"
       >
-        <i *ngIf="isOpen" class="bi bi-chevron-left text-sm"></i>
-        <i *ngIf="!isOpen" class="bi bi-chevron-right text-sm"></i>
-      </button>
+      <i class="bi bi-chevron-right text-sm"></i>
+        </button>
+      }
     </div>
 
     <div class="h-3 bg-white"></div>
@@ -23,25 +31,38 @@
     <!-- Menu dinámico -->
     <nav class="flex-1 text-[0.85rem]">
       <ng-container *ngFor="let item of menu">
-        <!-- Item principal -->
-        <div class="flex items-center justify-between hover:bg-slate-100 px-4 py-2 cursor-pointer"
-             [ngClass]="isOpen ? 'justify-start' : 'justify-center'">
-          <div class="flex items-center gap-3">
-            <i class="{{item.icon}} text-lg"></i>
+        <!-- Item principal (siempre link) -->
+        <div
+          class="flex items-center justify-between hover:bg-slate-100 px-4 py-2"
+          [ngClass]="isOpen ? 'justify-start' : 'justify-center'"
+        >
+          <!-- Link al route -->
+          <a
+            [routerLink]="item.route"
+            class="flex items-center gap-3 flex-1 cursor-pointer"
+          >
+            <i class="{{ item.icon }} text-lg"></i>
             <span *ngIf="isOpen">{{ item.label }}</span>
-          </div>
-          <!-- Flecha si tiene subitems -->
-          <i *ngIf="item.children && isOpen"
-             (click)="toggleSubmenu(item)"
-             class="bi"
-             [ngClass]="item.isOpen ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
+          </a>
+
+          <!-- Flecha toggle submenu -->
+          <i
+            *ngIf="item.children && isOpen"
+            (click)="toggleSubmenu(item); $event.stopPropagation()"
+            class="bi cursor-pointer"
+            [ngClass]="item.isOpen ? 'bi-chevron-up' : 'bi-chevron-down'"
+          >
+          </i>
         </div>
 
         <!-- Subitems -->
         <div *ngIf="item.children && item.isOpen" class="ml-8">
-          <a *ngFor="let child of item.children"
-             class="flex items-center px-2 py-1 hover:bg-slate-100">
-            <i class="{{child.icon}} text-sm"></i>
+          <a
+            *ngFor="let child of item.children"
+            [routerLink]="child.route"
+            class="flex items-center px-2 py-1 hover:bg-slate-100 cursor-pointer"
+          >
+            <i class="{{ child.icon }} text-sm"></i>
             <span class="ml-2 text-[0.8rem]">{{ child.label }}</span>
           </a>
         </div>

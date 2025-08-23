@@ -2,19 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { VehicleService } from '../vehicle.service';
 import { VehicleGetDTO } from '../vehicle-get-dto';
 import { CommonModule, JsonPipe } from '@angular/common';
+import { Router, RouterLink } from '@angular/router';
+import { ToolbarComponent } from '../../../shared/components/toolbar/toolbar.component';
 
 @Component({
   selector: 'app-vehicle-list',
-  imports: [JsonPipe, CommonModule
-  ],
+  imports: [CommonModule, RouterLink, ToolbarComponent],
   templateUrl: './vehicle-list.component.html',
-  styleUrl: './vehicle-list.component.css'
+  styleUrl: './vehicle-list.component.css',
 })
-export class VehicleListComponent implements   OnInit {
+export class VehicleListComponent implements OnInit {
+  vehicles: VehicleGetDTO[] = [];
 
-  vehicleList : VehicleGetDTO[] = [];
-
-  constructor(private vehicleService : VehicleService){}
+  constructor(private vehicleService: VehicleService,
+              private router : Router
+  ) {}
 
   ngOnInit(): void {
     this.getAll();
@@ -23,12 +25,17 @@ export class VehicleListComponent implements   OnInit {
   getAll() {
     this.vehicleService.findAll().subscribe(
       (data) => {
-        this.vehicleList = data;
+        this.vehicles = data;
+        console.log(data);
+        
       },
       (error) => {
-        console.log('Fallando');        
+        console.log('Fallando');
       }
-    )
+    );
   }
 
+  create() {
+    this.router.navigate(['/vehicleForm']);
+  }
 }
