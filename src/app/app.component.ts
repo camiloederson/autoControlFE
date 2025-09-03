@@ -10,7 +10,7 @@ import { RouterOutlet } from '@angular/router';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  imports: [CommonModule, NavbarComponent, SidebarComponent, ContentComponent, FooterComponent, RouterOutlet]
+  imports: [CommonModule, NavbarComponent, SidebarComponent, ContentComponent, FooterComponent]
 })
 export class AppComponent {
   isSidebarOpen = true;

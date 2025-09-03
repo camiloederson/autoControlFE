@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { CustomerGetDTO } from './customer-get-dto';
 import { CustomerPostDTO } from './customer-post-dto';
 import { CustomerPutDTO } from './customer-put-dto';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class CustomerService {
 
   constructor(private http: HttpClient) { }
 
-  private apiUrl = 'http://localhost:8080/api/v1/customers';
+  private apiUrl = `${environment.apiBaseUrl}/api/v1/customers`;
 
   public findAll() : Observable<CustomerGetDTO[]> {
     return this.http.get<CustomerGetDTO[]>(this.apiUrl);
