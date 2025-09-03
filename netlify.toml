@@ -1,5 +1,5 @@
 [build]
-  publish = "dist/auto-control-app"
+  publish = "dist/auto-control-app/browser"
   command = "ng build --configuration production"
 
 [[redirects]]
